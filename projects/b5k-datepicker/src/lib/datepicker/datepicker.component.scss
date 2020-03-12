@@ -1,0 +1,35 @@
+.datepicker-wrapper {
+    position: relative;
+    &.modal {
+        .skm-datepicker {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+            top: 15px;
+        }
+        &:before {
+            border-left: 1px solid lightgray;
+            transform: rotateZ(45deg);
+            border-top: 1px solid lightgray;
+            content: "";
+            background: white;
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            z-index: 999;
+        }
+    }
+}
+
+.skm-datepicker {
+    position: absolute;
+    overflow: hidden;
+}
+
+.skm-datepicker-view {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}

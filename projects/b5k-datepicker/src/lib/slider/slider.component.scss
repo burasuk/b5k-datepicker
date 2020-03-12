@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  position: relative;
+  height: 100%;
+}
+
+.skm-datepicker-slider {
+  display: flex;
+  position: relative;
+  left: -100%;
+  height: 100%;
+}
+
+.skm-datepicker-pagination {
+  position: absolute;
+  top: 0;
+
+
+
+  &:hover svg path{
+    stroke: hsla(210, 100%, 76%, 0.93);
+  }
+
+  path {
+    fill: none;
+    stroke: #9c9c9c;
+    stroke-width: 2px;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.skm-prev {
+    left: 0;
+  }
+
+  &.skm-next {
+    right: 0;
+  }
+}
