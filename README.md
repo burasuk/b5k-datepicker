@@ -137,8 +137,8 @@ const DatepickerConfig: B5kDatepickerConfig = {
 
 `<input type="text" b5kDatepicker [(ngModel)]="model" (dateChange)="selectedDate($event)">`
 
-| Property         | Type          | Description                                                                                  |
-|------------------|--------------|---------|----------------------------------------------------------------------------------------------|
+| Property         | Type          | Description |
+|------------------|---------------|-------------|
 | dateChange       | Date          | Emitted event when date are selected.  |
 
 ## Todo
