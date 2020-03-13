@@ -1,6 +1,7 @@
 # B5kDatepicker
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+
 Based on project [https://github.com/tomblachut/skimmed-datepicker](https://github.com/tomblachut/skimmed-datepicker)
 
 ## Demo
@@ -9,7 +10,13 @@ stackblitz
 
 ## Screenshots
 
-![b5k-datepicker module](readme_files/Adnotacja 2020-03-12 002723.png)
+Inline mode
+
+![inline mode](readme_files/inline-mode.png)
+
+Popup mode
+
+![popup mode](readme_files/popup-mode.png)
 
 ## Features
 
