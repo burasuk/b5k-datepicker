@@ -11,8 +11,6 @@ export class AppComponent {
 
 
   title = 'b5k-datepicker-demo';
-  monthLabels = moment.monthsShort('-MMM-');
-  weekDayLabels = moment.weekdaysShort();
   view = ViewMode.Months;
   view2 = ViewMode.Days;
   viewYears = ViewMode.Years;

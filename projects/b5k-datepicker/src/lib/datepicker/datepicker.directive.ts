@@ -36,9 +36,6 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
     @Input() headingFormat = 'LLLL y';
     @Input() weekStart = WeekDay.Monday;
 
-    @Input() dayLabels: string[];
-    @Input() monthLabels: string[];
-
     @Input() view = ViewMode.Days;
 
     @Input() selectOnlyMonths = false;
@@ -61,10 +58,6 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
     }
     setDisabledState?(isDisabled: boolean): void {
     }
-
-
-
-
 
     constructor(
         private vcRef: ViewContainerRef,
@@ -132,8 +125,6 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
             this.cRef.instance.monthFormat = this.monthFormat;
             this.cRef.instance.headingFormat = this.headingFormat;
             this.cRef.instance.weekStart = this.weekStart;
-            this.cRef.instance.dayLabels = this.dayLabels;
-            this.cRef.instance.monthLabels = this.datepickerService.config.monthLabels || this.monthLabels;
             this.cRef.instance.view = this.view;
             this.cRef.instance.selectOnlyMonths = this.selectOnlyMonths;
             this.cRef.instance.selectOnlyYears = this.selectOnlyYears;

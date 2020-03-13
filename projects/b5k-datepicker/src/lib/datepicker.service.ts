@@ -7,8 +7,6 @@ import { enGB } from 'date-fns/locale';
 export class DatepickerService {
 
   config: B5kDatepickerConfig = {
-    weekDayLabels: [],
-    monthLabels: [],
     locale: enGB
   };
 
