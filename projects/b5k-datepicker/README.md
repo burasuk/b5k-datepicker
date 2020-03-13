@@ -1,6 +1,7 @@
 # B5kDatepicker
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+
 Based on project [https://github.com/tomblachut/skimmed-datepicker](https://github.com/tomblachut/skimmed-datepicker)
 
 ## Demo
@@ -9,7 +10,13 @@ stackblitz
 
 ## Screenshots
 
-![b5k-datepicker module](readme_files/Adnotacja 2020-03-12 002723.png)
+Inline mode
+
+![inline mode](readme_files/inline-mode.png)
+
+Popup mode
+
+![popup mode](readme_files/popup-mode.png)
 
 ## Features
 
@@ -70,15 +77,17 @@ export class AppModule { }
 
 - ngModel
 
-`<input type="text" b5kDatepicker [(ngModel)]="dateModel">`
+  `<input type="text" b5kDatepicker [(ngModel)]="dateModel">`
 
 - reactive Forms
 
-`<input type="text" b5kDatepicker inlineMode=true formControlName="date">`
+  `<input type="text" b5kDatepicker inlineMode=true formControlName="date">`
 
 ## Configuration
 
-Global in module form root
+Global in module form root ( [B5kDatepickerConfig](projects/b5k-datepicker/src/lib/B5kDatepickerConfig.ts) )
+
+This settings is optional.
 
 ```ts
 const DatepickerConfig: B5kDatepickerConfig = {
@@ -110,19 +119,27 @@ const DatepickerConfig: B5kDatepickerConfig = {
 
 ## Options
 
+`<input type="text" b5kDatepicker [(ngModel)]="monthModel" [view]="view" [modelFormatter]="monthModelFormatter"  [selectOnlyMonths]=true>`
+
 | Property         | Type         | Default | Description                                                                                  |
 |------------------|--------------|---------|----------------------------------------------------------------------------------------------|
 | inlineMode       | boolean       | false   | Always visible  |
-| modelFormatter   | function      | --       | Function you can format your resulted date, eg. in moment `moment(date).format('D MMMM YYYY'`. 0Returned date is js Date object.                                             |
+| modelFormatter   | function      | --       | Function you can format your resulted date, eg. in moment `moment(date).format('D MMMM YYYY')`. Returned date is js Date object.                                             |
 | dayFormat	     | string      | d      | Day format in day view,     https://date-fns.org/v2.10.0/docs/format                                                                   |
-|monthFormat | string | LLL | |
-|headingFormat | string | LLLL y |
+|monthFormat | string | LLL | Format month names in month view. |
+|headingFormat | string | LLLL y | Format date in month heading, eg. February 2020.
 |weekStart|WeekDay|WeekDay.Monday| `import { WeekDay } from '@angular/common';`
-|dayLabels|string[]||
-|monthLabels|string[]||
-|view|ViewMode|ViewMode.Days|`import { ViewMode } from './view-mode';`|
-|selectOnlyMonths|boolean|false| With `view = ViewMode.Months` you can only select month.|
-|selectOnlyYears|boolean|false||       
+|view|[ViewMode](projects/b5k-datepicker/src/lib/datepicker/view-mode.ts)|ViewMode.Days|`import { ViewMode } from './view-mode';`|
+|selectOnlyMonths|boolean|false| If `selectOnlyMonths = true` and `view = ViewMode.Months`, you can only select month.|
+|selectOnlyYears|boolean|false| If `selectOnlyYears = true` and `view = ViewMode.Years` you can only select years.|       
+
+## Events
+
+`<input type="text" b5kDatepicker [(ngModel)]="model" (dateChange)="selectedDate($event)">`
+
+| Property         | Type          | Description |
+|------------------|---------------|-------------|
+| dateChange       | Date          | Emitted event when date are selected.  |
 
 ## Todo
 
