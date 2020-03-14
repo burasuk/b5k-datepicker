@@ -6,7 +6,7 @@ Based on project [https://github.com/tomblachut/skimmed-datepicker](https://gith
 
 ## Demo
 
-stackblitz
+[https://stackblitz.com/edit/b5k-datepicker](https://stackblitz.com/edit/b5k-datepicker)
 
 ## Screenshots
 
