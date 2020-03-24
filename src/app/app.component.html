@@ -185,11 +185,12 @@
 
     <div class="box">
         <h4>Select only month</h4>
-        <input type="text" b5kDatepicker [(ngModel)]="monthModel" [view]="view" [modelFormatter]="monthModelFormatter"  [selectOnlyMonths]=true>
+        <input type="text" b5kDatepicker [(ngModel)]="monthModel" [view]="view" [date]="selectedMonth" [modelFormatter]="monthModelFormatter"  [selectOnlyMonths]=true>
+        {{monthModel}}
     </div>
     <div class="box">
         <h4>Datepicker</h4>
-        <input type="text" b5kDatepicker [(ngModel)]="model" [modelFormatter]="modelFormatter">
+        <input type="text" b5kDatepicker [(ngModel)]="model" [date]="selectedDate" [modelFormatter]="modelFormatter">
     </div>
 
     <div class="box">

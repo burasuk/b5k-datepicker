@@ -20,10 +20,17 @@ export class AppComponent {
   monthModel: string;
   inlineModel: string;
 
+  selectedDate = new Date(2020, 2, 20);
 
-  modelFormatter(date) {
+  selectedMonth = new Date(2020, 1, 20);
+
+
+  // use fat arrow to keep context
+  modelFormatter = (date) => {
     return moment(date).format('D MMMM YYYY');
   }
+
+  // or use normal function if you dont need right context
   monthModelFormatter(date) {
     return moment(date).format('MMMM YYYY');
   }

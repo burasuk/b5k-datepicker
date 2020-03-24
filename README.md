@@ -41,11 +41,11 @@ import {B5kDatepickerModule, B5kDatepickerConfig} from 'b5k-datepicker';
 
 
 import { FormsModule } from '@angular/forms';
-import {enGB} from 'date-fns/locale';
+import {pl} from 'date-fns/locale';
 
 
 const DatepickerConfig: B5kDatepickerConfig = {
-  locale: enGB
+  locale: pl
 }
 
 @NgModule({
@@ -91,7 +91,7 @@ This settings is optional.
 
 ```ts
 const DatepickerConfig: B5kDatepickerConfig = {
-  locale: enGB
+  locale: pl
 }
 
 @NgModule({
@@ -107,13 +107,15 @@ export class AppModule { }
 Localization
 
 Datepicker localization is based on `date-fns`. Just import lang file into module.
-Default language is english `enGB`. If you want to change language set it in global configuration of module.
+Default language is english `enGB`, so you don't have to  import than language file.
+
+If you want to change language set it in global configuration of module.
 
 ```ts
-import {enGB} from 'date-fns/locale';
+import {pl} from 'date-fns/locale';
 
 const DatepickerConfig: B5kDatepickerConfig = {
-  locale: enGB
+  locale: pl
 }
 ```
 
@@ -123,8 +125,9 @@ const DatepickerConfig: B5kDatepickerConfig = {
 
 | Property         | Type         | Default | Description                                                                                  |
 |------------------|--------------|---------|----------------------------------------------------------------------------------------------|
+| date | Date | -- | Initial date |
 | inlineMode       | boolean       | false   | Always visible  |
-| modelFormatter   | function      | --       | Function you can format your resulted date, eg. in moment `moment(date).format('D MMMM YYYY')`. Returned date is js Date object.                                             |
+| modelFormatter   | function      | --       | Function you can format ngModel date.                                            |
 | dayFormat	     | string      | d      | Day format in day view,     https://date-fns.org/v2.10.0/docs/format                                                                   |
 |monthFormat | string | LLL | Format month names in month view. |
 |headingFormat | string | LLLL y | Format date in month heading, eg. February 2020.

@@ -25,7 +25,7 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
 
     private isOpen = false;
 
-    private selectedDate: Date;
+    @Input() date: Date;
 
     @Input() inlineMode = false;
     @Input() modelFormatter: (date: Date) => string;
@@ -75,6 +75,10 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
             this.renderer.setProperty(this.elementRef.nativeElement, 'type', 'hidden');
             this.openCalendar();
         }
+        if (this.date) {
+            this.setInputValue(this.date);
+            this.writeValue(this.date);
+        }
     }
 
     @HostListener('click', ['$event']) onClick($event) {
@@ -120,7 +124,7 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
         if (this.cRef === null) {
             this.cRef = this.vcRef.createComponent(this.cfr.resolveComponentFactory(DatepickerComponent));
             this.cRef.instance.inlineMode = this.inlineMode;
-            this.cRef.instance.date = this.selectedDate;
+            this.cRef.instance.date = this.date;
             this.cRef.instance.dayFormat = this.dayFormat;
             this.cRef.instance.monthFormat = this.monthFormat;
             this.cRef.instance.headingFormat = this.headingFormat;
@@ -132,7 +136,7 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
             this.cRef.instance.dateChange.subscribe((date: Date) => {
                 this.setInputValue(date);
                 this.writeValue(date);
-                this.selectedDate = date;
+                this.date = date;
                 if (!this.inlineMode) {
                     this.closeCalendar();
                 }
@@ -156,7 +160,8 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
     }
 
     private setInputValue(value: Date): void {
-        const formattedDate = (this.modelFormatter ? this.modelFormatter(value) : value);
+        const modelFormatter = this.modelFormatter.bind(this.elementRef);
+        const formattedDate = (this.modelFormatter ? modelFormatter(value) : value);
         this.elementRef.nativeElement.setAttribute('value', formattedDate);
     }
 
