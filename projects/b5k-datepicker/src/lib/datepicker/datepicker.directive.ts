@@ -167,6 +167,8 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
 
     ngOnDestroy(): void {
         this.closeCalendar();
-        this.documentClickEvent();
+        if(this.documentClickEvent) {
+            this.documentClickEvent();
+        }
     }
 }
