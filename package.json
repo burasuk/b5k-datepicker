@@ -19,7 +19,17 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "sync-version": "sync-json -v --property version --source package.json projects/b5k-datepicker/package.json",
+    "publish": "git push --follow-tags origin master && npm publish",
+    "release": "standard-version --no-verify --commit-all && npm run build",
+    "standard-version": "standard-version --no-verify --commit-all"
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "npm run sync-version",
+      "precommit": "git add ."
+    }
   },
   "dependencies": {
     "@angular/animations": "~8.2.14",
@@ -42,9 +52,9 @@
     "@angular/cli": "~8.3.21",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -55,6 +65,8 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "ng-packagr": "^5.4.0",
     "protractor": "~5.4.0",
+    "standard-version": "^7.1.0",
+    "sync-json": "^1.0.2",
     "ts-node": "~7.0.0",
     "tsickle": "^0.37.0",
     "tslint": "~5.15.0",
