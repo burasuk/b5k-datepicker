@@ -3,7 +3,6 @@ import { DatepickerComponent } from '../datepicker/datepicker.component';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { ViewMode } from './view-mode';
 import { WeekDay } from '@angular/common';
-import { DatepickerService } from '../datepicker.service';
 
 const NGX_DP_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
@@ -64,8 +63,7 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
         private cfr: ComponentFactoryResolver,
         private renderer: Renderer2,
         private zone: NgZone,
-        private elementRef: ElementRef,
-        private datepickerService: DatepickerService
+        private elementRef: ElementRef
     ) {
 
     }

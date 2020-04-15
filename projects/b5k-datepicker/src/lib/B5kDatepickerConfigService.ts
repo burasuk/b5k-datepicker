@@ -1,4 +1,21 @@
-import { InjectionToken } from '@angular/core';
-import { B5kDatepickerConfig } from './B5kDatepickerConfig';
+import { Injectable } from '@angular/core';
+import { enGB } from 'date-fns/locale';
+import { Subject } from 'rxjs';
 
-export const B5kDatepickerConfigService = new InjectionToken<B5kDatepickerConfig>('B5kDatepickerConfig');
+@Injectable()
+export class B5kDatepickerConfigService {
+
+
+  public localeChanged: Subject<never> = new Subject();
+  private locale$: Locale | undefined;
+
+  locale(): Locale | undefined {
+    return this.locale$;
+  }
+
+  setLocale(locale: Locale | undefined): void {
+    this.locale$ = locale;
+    this.localeChanged.next();
+  }
+
+}

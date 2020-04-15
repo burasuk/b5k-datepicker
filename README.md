@@ -35,18 +35,11 @@ Import module
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppComponent } from './app.component';
-import {B5kDatepickerModule, B5kDatepickerConfig} from 'b5k-datepicker';
-
-
 import { FormsModule } from '@angular/forms';
-import {pl} from 'date-fns/locale';
+import { AppComponent } from './app.component';
 
+import { B5kDatepickerModule } from 'b5k-datepicker';
 
-const DatepickerConfig: B5kDatepickerConfig = {
-  locale: pl
-}
 
 @NgModule({
   declarations: [
@@ -55,7 +48,7 @@ const DatepickerConfig: B5kDatepickerConfig = {
   imports: [
     BrowserModule,
     FormsModule,
-    B5kDatepickerModule.forRoot(DatepickerConfig),
+    B5kDatepickerModule.forRoot(),
     BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
@@ -83,40 +76,31 @@ export class AppModule { }
 
   `<input type="text" b5kDatepicker inlineMode=true formControlName="date">`
 
-## Configuration
-
-Global in module form root ( [B5kDatepickerConfig](projects/b5k-datepicker/src/lib/B5kDatepickerConfig.ts) )
-
-This settings is optional.
-
-```ts
-const DatepickerConfig: B5kDatepickerConfig = {
-  locale: pl
-}
-
-@NgModule({
-  declarations: [...],
-  imports: [
-    B5kDatepickerModule.forRoot(DatepickerConfig),
-  ],
-  bootstrap: [...]
-})
-export class AppModule { }
-```
-
-Localization
+## Localization
 
 Datepicker localization is based on `date-fns`. Just import lang file into module.
-Default language is english `enGB`, so you don't have to  import than language file.
 
-If you want to change language set it in global configuration of module.
+> Default language is english `enGB`, so you don't have to import that language file.
+
 
 ```ts
-import {pl} from 'date-fns/locale';
+import { pl } from 'date-fns/locale';
+import { B5kDatepickerModule, B5kDatepickerConfigService } from 'b5k-datepicker';
 
-const DatepickerConfig: B5kDatepickerConfig = {
-  locale: pl
-}
+
+const DatepickerConfig = new B5kDatepickerConfigService();
+DatepickerConfig.setLocale(pl);
+
+@NgModule({
+  ...
+  providers: [
+    {
+      provide: B5kDatepickerConfigService,
+      useValue: DatepickerConfig
+    }
+  ]
+})
+export class AppModule { }
 ```
 
 ## Options
@@ -154,6 +138,14 @@ const DatepickerConfig: B5kDatepickerConfig = {
 Build library and watch for changes `ng build b5k-datepicker --watch`
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Build
+
+`npm run release && npm run publish`
+
+If you want to change only major, minor or patch.
+
+`npm run standard-version -- --release-as minor && npm run build && npm run publish`
 
 ## License
 

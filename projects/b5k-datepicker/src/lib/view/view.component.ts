@@ -4,7 +4,7 @@ import { Pane } from '../pane';
 import { zoom, ZoomDirection } from '../util/zoom.animation';
 import { ViewMode } from '../datepicker/view-mode';
 import { ViewStrategy } from '../view-strategies/view-strategy';
-import { DatepickerService } from '../datepicker.service';
+import { B5kDatepickerConfigService } from '../B5kDatepickerConfigService';
 
 
 @Component({
@@ -43,7 +43,7 @@ export class ViewComponent implements OnChanges {
   private visiblePaneIndex: number;
   private regularTimestampFields = ['currentTimestamp', 'selectedTimestamp', 'minTimestamp', 'maxTimestamp'];
 
-  constructor(readonly viewStrategy: ViewStrategy, private datepickerService: DatepickerService) {
+  constructor(readonly viewStrategy: ViewStrategy, private b5kDatepickerConfigService: B5kDatepickerConfigService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {

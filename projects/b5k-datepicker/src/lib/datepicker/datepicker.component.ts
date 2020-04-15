@@ -15,7 +15,7 @@ import { isValidDate, noop, startOfDay } from '../util/helpers';
 import { ViewMode } from './view-mode';
 import { ZoomDirection } from '../util/zoom.animation';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { DatepickerService } from '../datepicker.service';
+import { B5kDatepickerConfigService } from '../B5kDatepickerConfigService';
 
 @Component({
   selector: 'skm-datepicker',
@@ -92,19 +92,19 @@ export class DatepickerComponent implements  OnChanges, OnInit {
   constructor(
     private cd: ChangeDetectorRef,
     public elementRef: ElementRef,
-    private datepickerService: DatepickerService) {
+    private b5kDatepickerConfigService: B5kDatepickerConfigService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('weekDayLabels' in changes) {
-      this.weekDayLabels =  [...Array(7).keys()].map(i => this.datepickerService.config.locale.localize.day(i, { width: 'short' }));
+      this.weekDayLabels =  [...Array(7).keys()].map(i => this.b5kDatepickerConfigService.locale().localize.day(i, { width: 'short' }));
     }
   }
 
   ngOnInit(): void {
     this.currentTimestamp = startOfDay(new Date()).getTime();
     this.initialTimestamp = this.selectedTimestamp || this.currentTimestamp;
-    this.weekDayLabels = [...Array(7).keys()].map(i => this.datepickerService.config.locale.localize.day(i, { width: 'short' }));
+    this.weekDayLabels = [...Array(7).keys()].map(i => this.b5kDatepickerConfigService.locale().localize.day(i, { width: 'short' }));
   }
 
   selectDay(timestamp: number | undefined): void {

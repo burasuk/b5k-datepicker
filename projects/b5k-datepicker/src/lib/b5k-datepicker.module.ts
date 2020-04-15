@@ -8,8 +8,6 @@ import { DaysStrategyDirective } from './view-strategies/days-strategy.directive
 import { MonthsStrategyDirective } from './view-strategies/months-strategy.directive';
 import { YearsStrategyDirective } from './view-strategies/years-strategy.directive';
 import { DatePickerDirective } from './datepicker/datepicker.directive';
-import { DatepickerService } from './datepicker.service';
-import { B5kDatepickerConfig } from './B5kDatepickerConfig';
 import { B5kDatepickerConfigService } from './B5kDatepickerConfigService';
 import { DateFormat } from './pipes/date-format.pipe';
 
@@ -35,16 +33,10 @@ import { DateFormat } from './pipes/date-format.pipe';
   ],
 })
 export class B5kDatepickerModule {
-  static forRoot(config: B5kDatepickerConfig): ModuleWithProviders  {
+  static forRoot(): ModuleWithProviders  {
     return {
       ngModule: B5kDatepickerModule,
-      providers: [
-        DatepickerService,
-        {
-          provide: B5kDatepickerConfigService,
-          useValue: config
-        }
-      ]
-    }
+      providers: [B5kDatepickerConfigService]
+    };
   }
 }
