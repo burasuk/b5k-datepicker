@@ -16,12 +16,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build b5k-datepicker",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "sync-version": "sync-json -v --property version --source package.json projects/b5k-datepicker/package.json",
-    "publish": "git push --follow-tags origin master && npm publish",
+    "publish": "git push --follow-tags origin master && npm publish dist/b5k-datepicker",
     "release": "standard-version --no-verify --commit-all && npm run build",
     "standard-version": "standard-version --no-verify --commit-all"
   },
