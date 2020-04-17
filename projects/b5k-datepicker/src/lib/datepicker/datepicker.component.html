@@ -1,6 +1,6 @@
 <div class="datepicker-wrapper" [ngClass]="{'modal': !inlineMode}" [@showCalendar]="inlineMode">
 
-            <div class="skm-datepicker" [ngSwitch]="view" >
+            <div class="skm-datepicker" [style.position]="inlineMode ? 'relative' : ''" [ngSwitch]="view" >
                 <skm-view *ngSwitchCase="ViewMode.Days" skmDaysStrategy class="skm-datepicker-view skm-datepicker-days-view" [zoomDirection]="zoomDirection" [initialTimestamp]="initialTimestamp" [currentTimestamp]="currentTimestamp" [selectedTimestamp]="selectedTimestamp"
                     [minTimestamp]="minTimestamp"  [maxTimestamp]="maxTimestamp" [deselectEnabled]="deselectEnabled" [headingFormat]="headingFormat" [weekStart]="weekStart" [weekDayLabels]="weekDayLabels" [itemFormat]="dayFormat" [itemLabels]="dayLabels" (headerClick)="switchView($event, ViewMode.Months, 'out')"
                     (itemChange)="selectDay($event)"></skm-view>
