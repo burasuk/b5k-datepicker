@@ -5,17 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 // import 'moment/locale/pl';
 
-
-
 import { FormsModule } from '@angular/forms';
-import {pl, enGB} from 'date-fns/locale';
-import { B5kDatepickerModule, B5kDatepickerConfigService } from 'b5k-datepicker';
-
-
-
-const DatepickerConfig = new B5kDatepickerConfigService();
-DatepickerConfig.setLocale(enGB);
-
+import { B5kDatepickerModule } from 'b5k-datepicker';
 
 @NgModule({
   declarations: [
@@ -27,12 +18,6 @@ DatepickerConfig.setLocale(enGB);
     B5kDatepickerModule.forRoot(),
     BrowserAnimationsModule
   ],
-  bootstrap: [AppComponent],
-  providers: [
-    {
-      provide: B5kDatepickerConfigService,
-      useValue: DatepickerConfig
-    }
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
