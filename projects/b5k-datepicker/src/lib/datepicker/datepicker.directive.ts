@@ -158,8 +158,11 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
     }
 
     private setInputValue(value: Date): void {
-        const modelFormatter = this.modelFormatter.bind(this.elementRef);
-        const formattedDate = (this.modelFormatter ? modelFormatter(value) : value);
+        let formattedDate = value;
+        if (this.modelFormatter) {
+            const modelFormatter = this.modelFormatter.bind(this.elementRef);
+            formattedDate = modelFormatter(value);
+        }
         this.elementRef.nativeElement.setAttribute('value', formattedDate);
     }
 
