@@ -20,7 +20,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "sync-version": "sync-json -v --property version --source package.json projects/b5k-datepicker/package.json",
+    "sync-version": "sync-json -v --property version --source package.json projects/b5k-datepicker/package.json && cp README.md projects/b5k-datepicker/",
     "publish": "git push --follow-tags origin master && npm publish dist/b5k-datepicker",
     "release": "standard-version --no-verify --commit-all && npm run build",
     "standard-version": "standard-version --no-verify --commit-all"
