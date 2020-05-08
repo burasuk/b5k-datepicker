@@ -26,7 +26,11 @@ export class AppComponent {
 
 
   // use fat arrow to keep context
-  modelFormatter = (date) => {
+  modelFormatter(date) {
+    return moment(date).format('Do MMMM YYYY');
+  }
+
+  inputValueFormatter(date) {
     return moment(date).format('D MMMM YYYY');
   }
 

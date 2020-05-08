@@ -28,6 +28,7 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
 
     @Input() inlineMode = false;
     @Input() modelFormatter: (date: Date) => string;
+    @Input() inputValueFormatter: (date: Date) => string;
     @Input() deselectEnabled: boolean;
 
     @Input() dayFormat = 'd';
@@ -46,8 +47,13 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
     onChangeCb: (_: any) => void = () => { };
     onTouchedCb: () => void = () => { };
 
-    writeValue(obj: any): void {
-        this.onChangeCb(obj);
+    writeValue(date: Date): void {
+        let formattedDate = date;
+        if (this.modelFormatter) {
+            const modelFormatter = this.modelFormatter.bind(this.elementRef);
+            formattedDate = modelFormatter(date);
+        }
+        this.onChangeCb(formattedDate);
     }
     registerOnChange(fn: any): void {
         this.onChangeCb = fn;
@@ -159,9 +165,9 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
 
     private setInputValue(value: Date): void {
         let formattedDate = value;
-        if (this.modelFormatter) {
-            const modelFormatter = this.modelFormatter.bind(this.elementRef);
-            formattedDate = modelFormatter(value);
+        if (this.inputValueFormatter) {
+            const inputValueFormatter = this.inputValueFormatter.bind(this.elementRef);
+            formattedDate = inputValueFormatter(value);
         }
         this.elementRef.nativeElement.setAttribute('value', formattedDate);
     }

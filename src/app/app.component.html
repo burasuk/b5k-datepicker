@@ -190,7 +190,10 @@
     </div>
     <div class="box">
         <h4>Datepicker</h4>
-        <input type="text" b5kDatepicker [(ngModel)]="model" [date]="selectedDate" [modelFormatter]="modelFormatter">
+        <input type="text" b5kDatepicker [(ngModel)]="model" [date]="selectedDate" [inputValueFormatter]="inputValueFormatter" [modelFormatter]="modelFormatter">
+        <p>
+            {{model}}
+        </p>
     </div>
 
     <div class="box">

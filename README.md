@@ -111,7 +111,8 @@ export class AppModule { }
 |------------------|--------------|---------|----------------------------------------------------------------------------------------------|
 | date | Date | -- | Initial date |
 | inlineMode       | boolean       | false   | Always visible  |
-| modelFormatter   | function      | --       | Function you can format ngModel date.                                            |
+| modelFormatter   | function      | --       | Function you can format date returned to ngModel or formControlName.                                            |
+| inputValueFormatter   | function      | --       | Function you can format date that is set to input value.                                            |
 | dayFormat	     | string      | d      | Day format in day view,     https://date-fns.org/v2.10.0/docs/format                                                                   |
 |monthFormat | string | LLL | Format month names in month view. |
 |headingFormat | string | LLLL y | Format date in month heading, eg. February 2020.
