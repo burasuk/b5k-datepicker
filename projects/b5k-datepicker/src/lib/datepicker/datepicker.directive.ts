@@ -67,11 +67,13 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
      * @param date Date
      */
     writeValue(date: Date): void {
-        this.date = date;
-        this.onChange(date);
-        this.setInputValue(this.date);
-        if (this.cRef !== null) {
-            this.cRef.instance.date = this.date;
+        if (date) {
+            this.date = date;
+            this.onChange(date);
+            this.setInputValue(this.date);
+            if (this.cRef !== null) {
+                this.cRef.instance.date = this.date;
+            }
         }
     }
     registerOnChange(fn: any) {
