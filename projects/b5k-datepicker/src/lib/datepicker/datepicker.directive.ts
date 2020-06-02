@@ -1,4 +1,19 @@
-import { Directive, ViewContainerRef, ComponentFactoryResolver, Renderer2, ChangeDetectorRef, ElementRef, ComponentRef, HostListener, Input, OnInit, NgZone, OnDestroy, forwardRef, Output, EventEmitter } from '@angular/core';
+import {
+    Directive,
+    ViewContainerRef,
+    ComponentFactoryResolver,
+    Renderer2,
+    ElementRef,
+    ComponentRef,
+    HostListener,
+    Input,
+    OnInit,
+    NgZone,
+    OnDestroy,
+    forwardRef,
+    Output,
+    EventEmitter
+} from '@angular/core';
 import { DatepickerComponent } from '../datepicker/datepicker.component';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { ViewMode } from './view-mode';
@@ -24,10 +39,9 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
 
     private isOpen = false;
 
-    @Input() date: Date;
+    private date: Date;
 
     @Input() inlineMode = false;
-    @Input() modelFormatter: (date: Date) => string;
     @Input() inputValueFormatter: (date: Date) => string;
     @Input() deselectEnabled: boolean;
 
@@ -44,25 +58,32 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
 
     private documentClickEvent: () => void;
 
-    onChangeCb: (_: any) => void = () => { };
-    onTouchedCb: () => void = () => { };
+    public disabled: boolean;
+    onChange: any = () => { };
+    onTouch: any = () => { };
 
+    /**
+     * Write a value to the input
+     * @param date Date
+     */
     writeValue(date: Date): void {
-        let formattedDate = date;
-        if (this.modelFormatter) {
-            const modelFormatter = this.modelFormatter.bind(this.elementRef);
-            formattedDate = modelFormatter(date);
+        this.date = date;
+        this.onChange(date);
+        this.setInputValue(this.date);
+        if (this.cRef !== null) {
+            this.cRef.instance.date = this.date;
         }
-        this.onChangeCb(formattedDate);
     }
-    registerOnChange(fn: any): void {
-        this.onChangeCb = fn;
+    registerOnChange(fn: any) {
+        this.onChange = fn;
     }
-    registerOnTouched(fn: any): void {
-        this.onTouchedCb = fn;
+    registerOnTouched(fn: any) {
+        this.onTouch = fn;
     }
     setDisabledState?(isDisabled: boolean): void {
+        this.disabled = isDisabled;
     }
+
 
     constructor(
         private vcRef: ViewContainerRef,
@@ -78,10 +99,6 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
         if (this.inlineMode) {
             this.renderer.setProperty(this.elementRef.nativeElement, 'type', 'hidden');
             this.openCalendar();
-        }
-        if (this.date) {
-            this.setInputValue(this.date);
-            this.writeValue(this.date);
         }
     }
 
@@ -138,9 +155,7 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
             this.cRef.instance.selectOnlyYears = this.selectOnlyYears;
             this.cRef.instance.deselectEnabled = this.deselectEnabled;
             this.cRef.instance.dateChange.subscribe((date: Date) => {
-                this.setInputValue(date);
                 this.writeValue(date);
-                this.date = date;
                 if (!this.inlineMode) {
                     this.closeCalendar();
                 }
@@ -174,7 +189,7 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
 
     ngOnDestroy(): void {
         this.closeCalendar();
-        if(this.documentClickEvent) {
+        if (this.documentClickEvent) {
             this.documentClickEvent();
         }
     }

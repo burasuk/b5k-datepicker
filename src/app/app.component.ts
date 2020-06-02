@@ -16,30 +16,18 @@ export class AppComponent {
   viewYears = ViewMode.Years;
 
   model: string;
-  yearModel: string;
-  monthModel: string;
-  inlineModel: string;
+  yearModel = new Date(2020, 2, 23);
+  monthModel = new Date(2020, 2, 22);
+  inlineModel = new Date(2020, 2, 21);
 
   selectedDate = new Date(2020, 2, 20);
 
   selectedMonth = new Date(2020, 1, 20);
 
 
-  // use fat arrow to keep context
-  modelFormatter(date) {
-    return moment(date).format('Do MMMM YYYY');
-  }
-
   inputValueFormatter(date) {
     return moment(date).format('D MMMM YYYY');
   }
 
-  // or use normal function if you dont need right context
-  monthModelFormatter(date) {
-    return moment(date).format('MMMM YYYY');
-  }
-  yearModelFormatter(date) {
-    return moment(date).format('YYYY');
-  }
 
 }

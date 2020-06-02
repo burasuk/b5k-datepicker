@@ -179,20 +179,20 @@
 
     <div class="box">
         <h4>Select only year</h4>
-        <input type="text" b5kDatepicker [(ngModel)]="yearModel" [view]="viewYears" [modelFormatter]="yearModelFormatter" [selectOnlyYears]=true>
+        <input type="text" b5kDatepicker [(ngModel)]="yearModel" [view]="viewYears" [selectOnlyYears]=true>
     </div>
 
 
     <div class="box">
         <h4>Select only month</h4>
-        <input type="text" b5kDatepicker [(ngModel)]="monthModel" [view]="view" [date]="selectedMonth" [modelFormatter]="monthModelFormatter"  [selectOnlyMonths]=true>
+        <input type="text" b5kDatepicker [(ngModel)]="monthModel" [view]="view"   [selectOnlyMonths]=true>
         {{monthModel}}
     </div>
     <div class="box">
         <h4>Datepicker</h4>
-        <input type="text" b5kDatepicker [(ngModel)]="model" [date]="selectedDate" [inputValueFormatter]="inputValueFormatter" [modelFormatter]="modelFormatter">
+        <input type="text" b5kDatepicker [(ngModel)]="selectedDate"  [inputValueFormatter]="inputValueFormatter" >
         <p>
-            {{model}}
+            {{selectedDate}}
         </p>
     </div>
 
