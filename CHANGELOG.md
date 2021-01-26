@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.1.7](https://github.com/burasuk/b5k-datepicker/compare/v8.1.6...v8.1.7) (2021-01-26)
+
+
+### Bug Fixes
+
+* remove disabled state from html input element ([c4942de](https://github.com/burasuk/b5k-datepicker/commit/c4942debe5d0b77147c38c1151abbf0f62befd70))
+
 ### [8.1.6](https://github.com/burasuk/b5k-datepicker/compare/v8.1.5...v8.1.6) (2021-01-26)
 
 
