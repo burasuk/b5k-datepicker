@@ -43,7 +43,6 @@ export class DatepickerComponent implements  OnChanges, OnInit {
       this.selectedTimestamp = isValidDate(date) ? date.getTime() : undefined;
       if (typeof this.selectedTimestamp !== 'undefined') {
         this.initialTimestamp = this.selectedTimestamp;
-        this.view = ViewMode.Days;
       }
     }
   }
