@@ -82,7 +82,12 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
     }
     setDisabledState?(isDisabled: boolean): void {
         this.disabled = isDisabled;
-        this.elementRef.nativeElement.setAttribute('disabled', isDisabled);
+        const inputEl = this.elementRef.nativeElement;
+        if (isDisabled) {
+            inputEl.setAttribute('disabled', isDisabled);
+        } else {
+            inputEl.removeAttribute('disabled');
+        }
     }
 
 
