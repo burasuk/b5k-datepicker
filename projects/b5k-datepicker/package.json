@@ -14,8 +14,8 @@
     "url": "git+https://github.com/burasuk/b5k-datepicker.git"
   },
   "peerDependencies": {
-    "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14",
+    "@angular/common": "~9.1.13",
+    "@angular/core": "~9.1.13",
     "date-fns": "^2.10.0"
   }
 }

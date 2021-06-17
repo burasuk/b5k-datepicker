@@ -33,7 +33,7 @@ import { DateFormat } from './pipes/date-format.pipe';
   ],
 })
 export class B5kDatepickerModule {
-  static forRoot(): ModuleWithProviders  {
+  static forRoot(): ModuleWithProviders<B5kDatepickerModule>  {
     return {
       ngModule: B5kDatepickerModule,
       providers: [B5kDatepickerConfigService]
