@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.0.0](https://github.com/burasuk/b5k-datepicker/compare/v8.1.5...v9.0.0) (2021-06-17)
+
 ### [8.1.5](https://github.com/burasuk/b5k-datepicker/compare/v8.1.4...v8.1.5) (2020-06-02)
 
 
