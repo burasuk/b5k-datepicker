@@ -67,13 +67,11 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
      * @param date Date
      */
     writeValue(date: Date): void {
-        if (date) {
-            this.date = date;
-            this.onChange(date);
-            this.setInputValue(this.date);
-            if (this.cRef !== null) {
-                this.cRef.instance.date = this.date;
-            }
+        this.date = date;
+        this.onChange(date);
+        this.setInputValue(this.date);
+        if (this.cRef !== null) {
+            this.cRef.instance.date = this.date;
         }
     }
     registerOnChange(fn: any) {
@@ -84,6 +82,12 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
     }
     setDisabledState?(isDisabled: boolean): void {
         this.disabled = isDisabled;
+        const inputEl = this.elementRef.nativeElement;
+        if (isDisabled) {
+            inputEl.setAttribute('disabled', isDisabled);
+        } else {
+            inputEl.removeAttribute('disabled');
+        }
     }
 
 
@@ -181,8 +185,8 @@ export class DatePickerDirective implements OnInit, OnDestroy, ControlValueAcces
     }
 
     private setInputValue(value: Date): void {
-        let formattedDate = value;
-        if (this.inputValueFormatter) {
+        let formattedDate = value || '';
+        if (this.inputValueFormatter && value) {
             const inputValueFormatter = this.inputValueFormatter.bind(this.elementRef);
             formattedDate = inputValueFormatter(value);
         }
